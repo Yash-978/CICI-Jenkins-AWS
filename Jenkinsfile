@@ -1,14 +1,13 @@
 node {
     def appDir = '/var/www/nextjs-app'
 
-    stage('Clean Workspace') {
-        echo 'Cleaning Jenkins Workspace'
+    stage('Clean Workspace'){
+        echo 'Cleaning Jenkins Workspaces'
         deleteDir()
     }
 
-    stage('Clone Repo') {
-        echo 'Cloning the Repository'
-
+    stage('Clone Repo'){
+        echo 'Cloning the Repo'
         git(
             branch: 'main',
             url: 'https://github.com/Yash-978/CICI-Jenkins-AWS'
@@ -36,7 +35,7 @@ node {
 
             sudo fuser -k 3000/tcp || true
 
-            nohup npm run start > /tmp/nextjs.log 2>&1 &
+            npm run start
         """
     }
 }
